@@ -1,0 +1,11 @@
+.articleListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .cardContainer {
+    width: 40%;
+    margin: 1rem;
+  }
+  

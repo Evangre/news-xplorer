@@ -1,14 +1,15 @@
 import React from "react";
 import "./Header.css";
 import { Navbar, Container, Nav } from "react-bootstrap";
+import { FaSearch } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <Navbar bg="primary" variant="dark" expand="lg">
+    <Navbar style={{ backgroundColor: "#a2a8d3" }} variant="dark" expand="lg">
       <Container>
         <Navbar.Brand href="/">News Xplorer</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse className="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/world">World</Nav.Link>
             <Nav.Link href="/technology">Technology</Nav.Link>
@@ -17,6 +18,15 @@ const Header = () => {
             <Nav.Link href="/business">Business</Nav.Link>
             <Nav.Link href="/health">Health</Nav.Link>
           </Nav>
+          <div className="search-container">
+            <input
+              type="text"
+              className="search-hover"
+              name=""
+              placeholder="search here..."
+            />
+            <FaSearch className="search-icon" />
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>

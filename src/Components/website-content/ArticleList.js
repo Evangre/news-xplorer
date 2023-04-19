@@ -1,0 +1,62 @@
+import React, { useState, useEffect } from "react";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
+import { useParams } from "react-router-dom";
+import "./ArticleList.css";
+
+const ArticleList = () => {
+  const [articles, setArticles] = useState([]);
+  const { category } = useParams();
+
+  useEffect(() => {
+    const apiKey = "gVZvmbufpKLfxADwxdxYOBpgEDqGeJxc";
+    const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=news_desk:("${category}")&api-key=${apiKey}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setArticles(data.response.docs);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [category]);
+
+  return (
+    <div className="articleListContainer">
+      {articles.map((article) => {
+        const imageUrl =
+          article.multimedia.length > 0
+            ? `https://www.nytimes.com/${article.multimedia[0].url}`
+            : null;
+
+        return (
+          <Card key={article.web_url} className="cardContainer">
+            {imageUrl && <Card.Img variant="top" src={imageUrl} />}
+            <Card.Header>{article.headline.main}</Card.Header>
+            <Card.Body>
+              <Card.Title>{article.snippet}</Card.Title>
+              <Card.Text>{article.abstract}</Card.Text>
+              <ListGroup variant="flush">
+                <ListGroup.Item>Section: {article.section_name}</ListGroup.Item>
+                <ListGroup.Item>
+                  Publication Date: {article.pub_date}
+                </ListGroup.Item>
+              </ListGroup>
+            </Card.Body>
+            <Card.Footer>
+              <a
+                href={article.web_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Read More
+              </a>
+            </Card.Footer>
+          </Card>
+        );
+      })}
+    </div>
+  );
+};
+
+export default ArticleList;
