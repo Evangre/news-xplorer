@@ -1,9 +1,9 @@
 import React from "react";
 import "./Header.css";
 import { Navbar, Container, Nav } from "react-bootstrap";
-import { FaSearch } from "react-icons/fa";
+import SearchBar from "./SearchBar";
 
-const Header = () => {
+const Header = ({ onSearch }) => {
   return (
     <Navbar style={{ backgroundColor: "#a2a8d3" }} variant="dark" expand="lg">
       <Container>
@@ -18,15 +18,7 @@ const Header = () => {
             <Nav.Link href="/business">Business</Nav.Link>
             <Nav.Link href="/health">Health</Nav.Link>
           </Nav>
-          <div className="search-container">
-            <input
-              type="text"
-              className="search-hover"
-              name=""
-              placeholder="search here..."
-            />
-            <FaSearch className="search-icon" />
-          </div>
+          <SearchBar onSearch={onSearch} />
         </Navbar.Collapse>
       </Container>
     </Navbar>

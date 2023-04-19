@@ -4,13 +4,22 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { useParams } from "react-router-dom";
 import "./ArticleList.css";
 
-const ArticleList = () => {
+const ArticleList = ({ searchTerm }) => {
   const [articles, setArticles] = useState([]);
   const { category } = useParams();
 
   useEffect(() => {
     const apiKey = "gVZvmbufpKLfxADwxdxYOBpgEDqGeJxc";
-    const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=news_desk:("${category}")&api-key=${apiKey}`;
+    let url;
+
+    if (category) {
+      url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=news_desk:("${category}")&api-key=${apiKey}`;
+    } else if (searchTerm) {
+      url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchTerm}&api-key=${apiKey}`;
+    } else {
+      url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=news&api-key=${apiKey}`; // Default search term or category
+    }
+
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -19,7 +28,7 @@ const ArticleList = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [category]);
+  }, [category, searchTerm]);
 
   return (
     <div className="articleListContainer">
