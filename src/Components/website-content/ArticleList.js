@@ -8,6 +8,17 @@ const ArticleList = ({ searchTerm }) => {
   const [articles, setArticles] = useState([]);
   const { category } = useParams();
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = ("0" + (date.getMonth() + 1)).slice(-2);
+    const day = ("0" + date.getDate()).slice(-2);
+    const hours = ("0" + date.getHours()).slice(-2);
+    const minutes = ("0" + date.getMinutes()).slice(-2);
+
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
+  };
+
   useEffect(() => {
     const apiKey = "gVZvmbufpKLfxADwxdxYOBpgEDqGeJxc";
     let url;
@@ -48,7 +59,7 @@ const ArticleList = ({ searchTerm }) => {
               <ListGroup variant="flush">
                 <ListGroup.Item>Section: {article.section_name}</ListGroup.Item>
                 <ListGroup.Item>
-                  Publication Date: {article.pub_date}
+                  Publication Date: {formatDate(article.pub_date)}
                 </ListGroup.Item>
               </ListGroup>
             </Card.Body>
