@@ -18,7 +18,7 @@ const SearchBar = ({ onSearch }) => {
     <form onSubmit={handleSubmit} className="search-container">
       <input
         type="text"
-        className="search-bar"
+        className="search-input"
         name=""
         placeholder="search here..."
         value={searchTerm}

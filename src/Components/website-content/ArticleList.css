@@ -1,11 +1,18 @@
 .articleListContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .cardContainer {
-    width: 40%;
-    margin: 1rem;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cardContainer {
+  width: 40%;
+  margin: 1rem;
+}
+
+.error-message {
+  font-family: "Montserrat", sans-serif;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+}
