@@ -3,11 +3,15 @@ import { useParams } from "react-router-dom";
 import "./ArticleList.css";
 import ArticleCard from "./ArticleCard";
 
+// ArticleList component
 const ArticleList = ({ searchTerm }) => {
+  // State for articles and error
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState(null);
+  // Get category from URL parameters
   const { category } = useParams();
 
+  // Function to format date
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const year = date.getFullYear();
@@ -19,6 +23,7 @@ const ArticleList = ({ searchTerm }) => {
     return `${year}-${month}-${day} ${hours}:${minutes}`;
   };
 
+  // Fetch articles from the API when the component mounts or searchTerm or category changes
   useEffect(() => {
     const apiKey = "gVZvmbufpKLfxADwxdxYOBpgEDqGeJxc";
     let url;

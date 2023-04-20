@@ -5,9 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./Components/header-and-footer/Footer";
 import ArticleList from "./Components/website-content/ArticleList";
 
+// Main App component
 const App = () => {
+  // State for search term
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Handler for search input from Header component
   const handleSearch = (term) => {
     setSearchTerm(term);
   };

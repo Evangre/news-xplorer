@@ -2,7 +2,9 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 
+// ArticleCard component
 const ArticleCard = ({ article, formatDate }) => {
+  // Get the image URL if available
   const imageUrl =
     article.multimedia.length > 0
       ? `https://www.nytimes.com/${article.multimedia[0].url}`

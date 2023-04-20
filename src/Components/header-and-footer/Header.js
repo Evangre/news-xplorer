@@ -3,6 +3,7 @@ import "./Header.css";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import SearchBar from "./SearchBar";
 
+// Header component
 const Header = ({ onSearch }) => {
   return (
     <Navbar style={{ backgroundColor: "#a2a8d3" }} variant="dark" expand="lg">

@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Container } from "react-bootstrap";
 
+// Footer component
 const Footer = () => {
   return (
     <Navbar bg="light" variant="light" fixed="bottom">
