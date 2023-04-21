@@ -13,7 +13,7 @@ News Xplorer is a React-based web application that allows users to explore news 
 
 ## Installation
 
-1. Clone the repository: git clone https://github.com/yourusername/news-xplorer.git
+1. Clone the repository: git clone https://github.com/evangre/news-xplorer.git
 
 2. Change the directory: cd news-xplorer
 
